@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Omarchy Start",
+  "short_name": "Omarchy Start",
+  "version": "0.1.2",
+  "description": "An opinionated browser start page for Omarchy users.",
+  "minimum_chrome_version": "116",
+  "icons": {
+    "16": "assets/icons/omarchy-start-16.png",
+    "32": "assets/icons/omarchy-start-32.png",
+    "48": "assets/icons/omarchy-start-48.png",
+    "128": "assets/icons/omarchy-start-128.png"
+  },
+  "chrome_url_overrides": {
+    "newtab": "newtab.html"
+  },
+  "action": {
+    "default_title": "Open Omarchy Start",
+    "default_icon": {
+      "16": "assets/icons/omarchy-start-16.png",
+      "32": "assets/icons/omarchy-start-32.png"
+    }
+  },
+  "commands": {
+    "open-start-page": {
+      "suggested_key": {
+        "default": "Alt+T",
+        "linux": "Alt+T"
+      },
+      "description": "Open Omarchy Start"
+    }
+  },
+  "permissions": [
+    "storage",
+    "search",
+    "favicon",
+    "geolocation"
+  ],
+  "host_permissions": ["https://omarchy.org/*"],
+  "optional_host_permissions": [
+    "https://api.bing.com/*",
+    "https://suggestqueries.google.com/*",
+    "https://duckduckgo.com/*",
+    "https://search.brave.com/*",
+    "https://ac.ecosia.org/*",
+    "https://www.startpage.com/*",
+    "https://*/*",
+    "file:///*"
+  ],
+  "background": {
+    "service_worker": "background/sw.js",
+    "type": "module"
+  }
+}

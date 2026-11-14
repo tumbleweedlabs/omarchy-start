@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" data-theme="dark" data-density="comfortable">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>New Tab</title>
+
+  <link rel="preload" href="assets/fonts/Geist-Variable-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles/app.css">
+  <script src="src/boot.js"></script>
+  <script type="module" src="src/main.js"></script>
+</head>
+<body>
+  <div id="bg-base" aria-hidden="true"></div>
+  <img id="bg" class="bg" alt="" aria-hidden="true" decoding="async">
+  <img id="bg-next" class="bg" alt="" aria-hidden="true" decoding="async">
+  <div id="scrim" aria-hidden="true"></div>
+
+  <div class="brand" aria-label="Omarchy Start">OMARCHY <span> / START</span></div>
+
+  <div class="workspace">
+  <main id="page" class="page">
+    <section id="widgets" class="widgets" aria-label="Today">
+      <div id="w-date" class="widget glass w-date" role="group" aria-label="Calendar"></div>
+      <div id="w-clock" class="widget glass w-clock" role="group" aria-label="Clock"></div>
+      <div id="w-weather" class="widget glass w-weather" role="group" aria-label="Weather" hidden></div>
+    </section>
+
+    <section class="search-wrap" id="search-wrap">
+      <form id="search-form" class="search glass" role="search" autocomplete="off">
+        <button id="scope-btn" class="scope-btn" type="button" aria-haspopup="menu" aria-label="Search in"></button>
+        <input id="q" type="text" name="q" autocomplete="off" spellcheck="false" autofocus
+               role="combobox" aria-expanded="false" aria-controls="suggest" aria-autocomplete="list"
+               aria-label="Search">
+        <button id="q-clear" class="q-clear" type="button" aria-label="Clear search" hidden></button>
+      </form>
+      <div id="suggest" class="suggest glass-strong" role="listbox" aria-label="Suggestions" hidden></div>
+    </section>
+
+    <section id="omarchy-news" class="omarchy-news" aria-label="Omarchy news" hidden></section>
+  </main>
+
+  <footer class="foot">
+    <nav id="quick" class="dock" aria-label="Quick access"></nav>
+    <div class="foot-end">
+      <button id="settings-btn" class="icon-btn" type="button" aria-label="Settings (Ctrl+,)" title="Settings (Ctrl+,)"></button>
+    </div>
+  </footer>
+  </div>
+
+  <div id="drawer-veil" class="drawer-veil" hidden></div>
+  <aside id="drawer" class="drawer glass-strong" aria-label="Settings" hidden></aside>
+  <div id="menu" class="menu glass-strong" role="menu" hidden></div>
+  <dialog id="dlg" class="dlg glass-strong"></dialog>
+  <div id="toast" class="toast glass-strong" role="status" aria-live="polite" popover="manual" hidden></div>
+</body>
+</html>
