@@ -1,6 +1,6 @@
 # Omarchy Start distribution plan
 
-**Status:** Chrome Web Store proposal for review, 14 November 2026. The source repository is being prepared; no store item has been published.
+**Status:** Chrome Web Store proposal for review, 14 November 2026. The public source repository is live at https://github.com/tumbleweedlabs/omarchy-start; no store item has been published.
 
 ## Recommended route
 
