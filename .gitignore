@@ -1,3 +1,6 @@
 /dist/
 __pycache__/
 *.pyc
+
+# Local session notes
+/SESSION_HANDOFF.md
