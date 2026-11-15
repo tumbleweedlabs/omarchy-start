@@ -299,8 +299,8 @@ let clockEdit = null;     // "my" | 0 | 1 | 2 | null
 function clocks(s) {
   const rows = s.worldClocks.map((c, i) => clockRow(s, i, `World clock ${i + 1}`, c && c.label, c && c.tz, ""));
   return section("Clocks",
-    el("div", { class: "clk-list" }, rows),
-    row("Show world clocks", toggleCtl("set-wc", s.worldClocksShow, v => set(x => { x.worldClocksShow = v; }, true), "Show world clocks")));
+    row("Show world clocks", toggleCtl("set-wc", s.worldClocksShow, v => set(x => { x.worldClocksShow = v; }, true), "Show world clocks")),
+    el("div", { class: "clk-list" }, rows));
 }
 
 function clockRow(s, key, title, label, tz, note) {
