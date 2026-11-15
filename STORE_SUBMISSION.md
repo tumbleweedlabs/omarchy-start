@@ -42,8 +42,8 @@ The required `https://omarchy.org/*` permission supports the default news feed. 
 - [x] 128 × 128 PNG store icon exists at `extension/assets/icons/omarchy-start-128.png`.
 - [x] Listing screenshots from the owner's actual dashboard and Settings captures were prepared by exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md). Originals were not changed.
 - [x] The owner-approved privacy policy URL returned 200 without sign-in on 14 November 2026.
-- [x] The owner reports the developer account is set up with a suitable email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
+- [x] The owner reports the developer account is set up with a suitable email.
 - [x] The owner confirmed the new Settings credit works and looks good, and reports completing browser checks. Browser versions and individual outcomes are not recorded here.
-- [ ] Confirm the uploaded ZIP is the 0.1.4 candidate tested by the owner.
-- [ ] Confirm the developer dashboard shows a verified contact email and 2-Step Verification, then review the package and permission explanations in the final submission form.
-- [ ] Upload the ZIP, enter the Privacy practices text above and select public visibility for the initial listing.
+- [x] The owner confirms the uploaded ZIP is the 0.1.4 candidate they tested.
+- [x] The owner confirms the developer dashboard shows a verified contact email and 2-Step Verification, and the package and permission explanations were reviewed in the final submission form.
+- [x] The owner confirms the ZIP was uploaded, the Privacy practices text was entered, and public visibility was selected for the initial listing.
