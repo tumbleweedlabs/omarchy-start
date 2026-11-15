@@ -44,7 +44,7 @@ The `https://*/*` and `file:///*` declarations need particular review because th
 
 - [x] 128 × 128 PNG store icon exists at `extension/assets/icons/omarchy-start-128.png`.
 - [x] ~~Prepare listing screenshots from the owner's actual dashboard and Settings captures.~~ 14 Nov 2026: The owner approved exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md), made from the actual 1657 × 1088 dashboard and 1656 × 1087 Settings captures. Both were visually inspected for private data; they show public Omarchy content and the owner's accepted Settings appearance. Originals are untouched.
-- [ ] Confirm the owner-approved privacy policy URL is reachable without sign-in.
+- [x] ~~Confirm the owner-approved privacy policy URL is reachable without sign-in.~~ 14 Nov 2026: An unauthenticated HTTP request returned 200 and the page rendered the policy title.
 - [x] ~~Choose the developer account and a suitable email.~~ 14 Nov 2026: Owner reports the account is set up with a good email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
 - [ ] Finish the [browser check](BROWSER_TEST_CHECKLIST.md) and permission checks in `RELEASE_READINESS.md`, then tag and rebuild the release candidate.
 - [ ] Upload the ZIP and fill the Privacy practices and distribution fields. Start with unlisted visibility for a limited tester group.
