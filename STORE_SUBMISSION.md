@@ -1,8 +1,8 @@
 # Chrome Web Store submission draft
 
-**Prepared:** 14 November 2026
+**Updated:** 15 November 2026
 
-**Candidate:** 0.1.4 test build. Owner-approved copy; verify against the final ZIP before entering these fields.
+**Candidate:** 0.1.4 package for public submission. Verify these fields against the ZIP uploaded to the developer dashboard.
 
 ## Listing
 
@@ -21,31 +21,29 @@
 >
 > On Omarchy, you can connect the current desktop wallpaper and theme colors by entering your Linux username and allowing local file access in your browser. If you skip that step, the page uses a solid-color background. Omarchy news is enabled initially; you can turn it off or choose your own HTTPS RSS or Atom feed. Search predictions and automatic device location are optional.
 >
-> Settings and cached content stay in your browser profile. No account, analytics, or developer-operated sync service is required. This independent project is not affiliated with or endorsed by Omarchy.
+> Settings and cached content stay in your browser profile. No account, analytics, or developer-operated sync service is required. Designed by Tumbleweed Labs, this independent project is not affiliated with or endorsed by Omarchy.
 
-**Single purpose for Privacy practices:** Replace the browser's new-tab page with an Omarchy-inspired dashboard that combines at-a-glance information, search, links, and optional desktop wallpaper and RSS integration.
+**Single purpose for Privacy practices:** Omarchy Start turns the browser's new-tab page into a dashboard with clocks, weather, search, quick links, news feeds, and optional Omarchy wallpaper and theme colors.
 
-## Permission explanations
+## Privacy practices: permission justifications
 
-| Manifest entry | Purpose and scope |
+| Manifest entry | Justification |
 | --- | --- |
-| `storage` | Save dashboard settings, links, uploaded icons, fetched results, and first-run state in the browser profile. |
-| `search` | Send submitted Web searches to the browser's configured default search engine. Other search scopes are selected by the user. |
-| `favicon` | Show browser-provided site icons for quick links when a custom or bundled icon is not selected. |
-| `geolocation` | Support the optional automatic-location setting for weather and the local clock. Chrome does not allow this manifest permission to be optional; the feature remains off until the user enables it and the browser grants location access. |
-| `https://omarchy.org/*` | Fetch the default Omarchy RSS news feed. RSS can be turned off. |
-| Six named optional search-prediction hosts | Request access only to the selected provider when the user enables predictions. Send typed search text to that provider. |
-| `https://*/*` (optional) | Permit a user-selected HTTPS RSS/Atom host that cannot be known when the package is built. The extension requests access to the selected feed's host at runtime and fetches only that feed. |
-| `file:///*` (optional) | Read the Omarchy current wallpaper and theme color file after the user enters their Linux username and allows file URLs. Chromium's grant is broad, though the implemented reads target Omarchy state. |
+| `favicon` | Quick links can display the destination site's browser-provided icon so saved links are easier to recognize. Users can also choose a bundled icon or upload their own. |
+| `geolocation` | When a user enables automatic location, Omarchy Start uses the browser's location result for nearby weather and the local time zone. Users can enter a location manually. |
+| `search` | A submitted Web search goes to the browser's configured default search engine. The user can choose other search destinations in the search picker. |
+| `storage` | Dashboard preferences, quick links, uploaded icons, recent results, and first-run state are saved in the user's browser profile so their choices persist. |
+| Host permissions | Omarchy Start fetches the default Omarchy news feed. For a custom HTTPS RSS or Atom feed, it requests access to the selected feed's host before fetching it. If search predictions are enabled, it requests access to the chosen provider and sends typed search text there. Connecting Omarchy requests local file access to read the current wallpaper and theme colors. The extension does not inject scripts into visited pages. |
 
-The `https://*/*` and `file:///*` declarations need particular review because their potential scope is broader than the normal requests. There are no content scripts, tab-history reads, or remote executable scripts in the 0.1.4 package.
+The required `https://omarchy.org/*` permission supports the default news feed. The six named optional hosts support predictions only for the selected provider. The optional `https://*/*` declaration accommodates a user-selected feed host that cannot be known when the extension is packaged; the runtime request is for that host. Chromium's `file:///*` grant is broad, while the extension's implemented reads target Omarchy's current wallpaper and theme-color files. There are no content scripts, tab-history reads, or remote executable scripts in the 0.1.4 package. The geolocation manifest permission is present, but automatic location remains off until the user enables it and grants browser access.
 
 ## Assets and submission gates
 
 - [x] 128 × 128 PNG store icon exists at `extension/assets/icons/omarchy-start-128.png`.
-- [x] ~~Prepare listing screenshots from the owner's actual dashboard and Settings captures.~~ 14 Nov 2026: The owner approved exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md), made from the actual 1657 × 1088 dashboard and 1656 × 1087 Settings captures. Both were visually inspected for private data; they show public Omarchy content and the owner's accepted Settings appearance. Originals are untouched.
-- [x] ~~Confirm the owner-approved privacy policy URL is reachable without sign-in.~~ 14 Nov 2026: An unauthenticated HTTP request returned 200 and the page rendered the policy title.
-- [x] ~~Choose the developer account and a suitable email.~~ 14 Nov 2026: Owner reports the account is set up with a good email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
-- [ ] Confirm the 0.1.4 candidate and owner testing for the initial listing. The owner confirmed the new Settings credit works and looks good and reports having run the browser checks; browser versions and individual outcomes are not recorded here.
+- [x] Listing screenshots from the owner's actual dashboard and Settings captures were prepared by exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md). Originals were not changed.
+- [x] The owner-approved privacy policy URL returned 200 without sign-in on 14 November 2026.
+- [x] The owner reports the developer account is set up with a suitable email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
+- [x] The owner confirmed the new Settings credit works and looks good, and reports completing browser checks. Browser versions and individual outcomes are not recorded here.
+- [ ] Confirm the uploaded ZIP is the 0.1.4 candidate tested by the owner.
 - [ ] Confirm the developer dashboard shows a verified contact email and 2-Step Verification, then review the package and permission explanations in the final submission form.
-- [ ] Upload the ZIP and fill the Privacy practices and distribution fields. Start with unlisted visibility for a limited tester group.
+- [ ] Upload the ZIP, enter the Privacy practices text above and select public visibility for the initial listing.

@@ -2,9 +2,9 @@
 
 **A quieter place to begin.**
 
-Omarchy Start is an opinionated browser start page for Omarchy users. It brings your clock, calendar, weather, search and favorite places together in a flat, keyboard-friendly Chromium extension. This test version is installed manually and is not an official Omarchy release.
+Omarchy Start is an opinionated browser start page for Omarchy users. It brings your clock, calendar, weather, search and favorite places together in a flat, keyboard-friendly Chromium extension. The current 0.1.4 build can be installed manually while its public Chrome Web Store listing is prepared.
 
-> **Early development:** this is not yet a finished release. Full theme and font synchronization, icon-pack selection, and cross-browser verification are still in progress. See the [release-readiness tracker](RELEASE_READINESS.md) for current gaps and the [specification](SPECIFICATION.md) for the intended experience.
+The [specification](SPECIFICATION.md) describes current behavior and future work. The extension reads Omarchy's current palette and wallpaper when connected. It uses generic CSS `monospace`; on the development machine, fontconfig resolves that family to the selected Omarchy font. Browser rendering and later font changes are not explicitly synchronized.
 
 ## What works in the current build
 
@@ -23,24 +23,24 @@ The [privacy policy](PRIVACY.md) describes local storage, optional permissions, 
 
 To connect the wallpaper, enter your Linux username under **Settings → Background** and click **Connect Omarchy**. Enable **Allow access to file URLs** on the extension’s `chrome://extensions` details page if prompted, then connect again. If the wallpaper cannot be read and the browser supports folder selection, **Choose folder instead** appears; select `/home/username/.local/state/omarchy` (use **Ctrl+H** to reveal `.local`). Chromium's file permission covers local files broadly, although Omarchy Start requests only the current wallpaper and theme colors. The last displayed original image is cached locally and loaded early on new tabs. With live watching unavailable, the page checks for changes when opened or brought back into focus; no background polling is used. Still images up to 20 MB are supported. Weather and geocoding use external services; optional device location sends coordinates to those providers. See the privacy policy for the full data-flow description.
 
-## Try the test copy
+## Install the current build
 
-Build the current test ZIP with `python3 tools/build-test-package.py`; `dist/` is generated locally and is not committed. For version 0.1.4, the result is `dist/omarchy-start-0.1.4.zip`. Extract it into a folder, then select that folder with **Load unpacked**. The ZIP also has `manifest.json` at its root for Chrome Web Store upload. Its [included tester README](extension/README.md) covers setup, a focused test checklist, permissions, known limitations and useful bug-report details. The archive contains runtime files and notices; it excludes tests and project planning documents.
+Build the current ZIP with `python3 tools/build-test-package.py`; `dist/` is generated locally and is not committed. The script names the ZIP `dist/omarchy-start-<version>.zip` using the manifest version. Extract it into a folder, then select that folder with **Load unpacked**. The ZIP also has `manifest.json` at its root for Chrome Web Store upload. Its [included setup README](extension/README.md) covers permissions, known limitations and useful bug-report details. The archive contains runtime files and notices; it excludes tests and project planning documents.
 
 1. Open `chrome://extensions` in Chrome or the equivalent extensions page in your Chromium-based browser.
 2. Enable **Developer mode** and choose **Load unpacked**.
 3. Select the [`extension`](extension/) directory in this checkout, or the extracted test-build folder.
-4. Open a new tab. The first-run tour ends at **Settings → Background** so you can connect your Omarchy folder. On an existing installation that has already seen the tour, use **Settings → Shortcuts → Replay tour**.
+4. Open a new tab. The first-run tour ends at **Settings → Background**, where you can enter your Linux username and connect Omarchy. On an existing installation that has already seen the tour, use **Settings → Shortcuts → Replay tour**.
 5. If Chromium shows a footer with **Omarchy Start** and **Customize Chromium**, right-click the footer and choose **Hide footer on New Tab page**. Alternatively, open **Customize Chromium → Footer** and turn off **Show footer on New Tab page**. This footer is added by the browser.
 6. After changing extension files, reload the extension on the extensions page and open another new tab.
 
 `Alt+T` is a suggested browser shortcut, so two installed copies can conflict. If it does not work, open `chrome://extensions/shortcuts` and assign it to the enabled copy. Settings → Shortcuts reports the active assignment.
 
-This is a test build: browser compatibility and visible behavior have not yet been fully verified. Loading it overrides the browser's new-tab page; disable the extension to return to the previous page. The browser can keep focus in the address bar on Ctrl+T, regardless of the page's autofocus request. Testers should report their browser/version, steps to reproduce, observed behavior and permission state; screenshots help with layout problems. The selected Omarchy system font is not yet followed.
+Loading the extension overrides the browser's new-tab page; disable it to return to the previous page. The browser can keep focus in the address bar on Ctrl+T, regardless of the page's autofocus request. Browser behavior may differ around file access and live folder watching. Reports should include the browser/version, steps to reproduce, observed behavior and permission state; screenshots help with layout problems.
 
 ## Design direction
 
-Omarchy Start follows the spirit of the desktop: flat surfaces, considered typography, restrained color and room for the background to breathe. The extension follows the current Omarchy wallpaper through optional Chromium file access. The current theme palette is applied when available; system font synchronization is not implemented.
+Omarchy Start follows the spirit of the desktop: flat surfaces, considered typography, restrained color and room for the background to breathe. The extension follows the current Omarchy wallpaper through optional Chromium file access. The current theme palette is applied when available. CSS `monospace` may use the selected desktop font through fontconfig, but the extension does not read the font choice or explicitly refresh existing tabs when it changes.
 
 ## Development
 
@@ -55,10 +55,10 @@ node --test tools/*.test.cjs
 
 Rebuild from the runtime files with `python3 tools/build-test-package.py` at the project root. The script takes the version from `extension/manifest.json`, keeps only that version's folder and ZIP in `dist/`, and produces the same ZIP bytes from the same source files.
 
-A successful unit run does not replace testing the extension in a real browser. The project still needs interaction, accessibility, visual, integration and distribution tests; see the [specification](SPECIFICATION.md).
+A successful unit run does not replace testing the extension in a real browser. Review interaction, accessibility, layout, permission recovery and desktop integration when changing these features; see the [specification](SPECIFICATION.md).
 
 The [Chrome Web Store submission copy](STORE_SUBMISSION.md) keeps listing text, permission explanations, and the remaining submission gates together.
 
 ## Credits and licensing
 
-First-party code is licensed under the [MIT License](LICENSE). Bundled assets and data have separate terms in the [third-party notices](extension/LICENSES.md); both files are included in the test package. This is an early test copy, not a completed public release. Omarchy is a separate project, and this extension does not claim official affiliation.
+Designed by Tumbleweed Labs. First-party code is licensed under the [MIT License](LICENSE). Bundled assets and data have separate terms in the [third-party notices](extension/LICENSES.md); both files are included in the package. Omarchy is a separate project, and this extension does not claim official affiliation.
