@@ -2,7 +2,7 @@
 
 **Prepared:** 14 November 2026
 
-**Candidate:** 0.1.2 test build. Owner-approved copy; verify against the final tagged ZIP before entering these fields.
+**Candidate:** 0.1.2 test build. Owner-approved copy; verify against the final ZIP before entering these fields.
 
 ## Listing
 
@@ -46,5 +46,6 @@ The `https://*/*` and `file:///*` declarations need particular review because th
 - [x] ~~Prepare listing screenshots from the owner's actual dashboard and Settings captures.~~ 14 Nov 2026: The owner approved exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md), made from the actual 1657 × 1088 dashboard and 1656 × 1087 Settings captures. Both were visually inspected for private data; they show public Omarchy content and the owner's accepted Settings appearance. Originals are untouched.
 - [x] ~~Confirm the owner-approved privacy policy URL is reachable without sign-in.~~ 14 Nov 2026: An unauthenticated HTTP request returned 200 and the page rendered the policy title.
 - [x] ~~Choose the developer account and a suitable email.~~ 14 Nov 2026: Owner reports the account is set up with a good email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
-- [ ] Finish the [browser check](BROWSER_TEST_CHECKLIST.md) and permission checks in `RELEASE_READINESS.md`, then tag and rebuild the release candidate.
+- [x] ~~Confirm the 0.1.2 candidate and owner testing for the initial unlisted listing.~~ 14 Nov 2026: The owner reports extensive hands-on testing and that the extension works well. The ten automated test files pass, and the rebuilt ZIP is byte-for-byte identical to the prepared candidate. The broader browser matrix remains a public-release quality goal in [`RELEASE_READINESS.md`](RELEASE_READINESS.md).
+- [ ] Confirm the developer dashboard shows a verified contact email and 2-Step Verification, then review the package and permission explanations in the final submission form.
 - [ ] Upload the ZIP and fill the Privacy practices and distribution fields. Start with unlisted visibility for a limited tester group.
