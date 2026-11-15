@@ -18,42 +18,41 @@ let selfChange = 0;
 let geoResults = null;
 let wallpaperHome = "";
 let wallpaperFileGranted = false;
-let wallpaperNeedsHome = false;
-let pendingFolderHome = "";
+let folderFallbackVisible = false;
 let startShortcut = null;
 let ZONES = [];
 let predAccess = false;   // whether this browser has granted the chosen prediction provider
 
-async function connectOmarchy() {
+async function connectOmarchy(useFolderPicker = false) {
   const status = message => { const node=document.getElementById("omarchy-connect-status"); if (node) node.textContent=message; };
   try {
     status("Connecting…");
-    if (window.showDirectoryPicker && !wallpaperNeedsHome && !pendingFolderHome && (!wallpaperHome || wallpaperFileGranted)) {
-      pendingFolderHome = await selectOmarchyFolder();
-      if (!pendingFolderHome) {
-        wallpaperNeedsHome = true;
-        render();
-        status("Couldn’t infer your username. Enter it below, then connect.");
+    if (useFolderPicker) {
+      const folderHome = await selectOmarchyFolder();
+      if (!folderHome) {
+        status("Couldn’t infer your username from that folder. Enter it above, then connect.");
         return;
       }
-      wallpaperHome = pendingFolderHome.replace(/^\/home\//, "");
+      wallpaperHome = folderHome.replace(/^\/home\//, "");
     }
-    const entered = (pendingFolderHome || wallpaperHome).trim().replace(/\/$/, "");
+    const entered = wallpaperHome.trim().replace(/\/$/, "");
     const path = /^[A-Za-z0-9_.-]+$/.test(entered) ? `/home/${entered}` : entered;
-    if (!validHome(path)) { status("Enter your Linux username or home directory."); return; }
+    if (!validHome(path)) {
+      folderFallbackVisible = true;
+      if (open) render();
+      status("Enter your Linux username or home directory.");
+      return;
+    }
     await connectWallpaper(path);
-    pendingFolderHome = "";
     wallpaperFileGranted = true;
+    folderFallbackVisible = false;
     if ('FileSystemObserver' in window && !isOmarchyWatching()) await startOmarchyWatch(omarchyChanged);
     const displayed = await omarchyChanged();
     render();
     status(displayed ? "Connected." : "Connected; wallpaper unavailable.");
   } catch (error) {
     wallpaperFileGranted = await hasWallpaperFileAccess();
-    if (wallpaperFileGranted && /Cannot read Omarchy/.test(error.message)) {
-      pendingFolderHome = "";
-      wallpaperNeedsHome = true;
-    }
+    if (!useFolderPicker && /Cannot read Omarchy/.test(error.message)) folderFallbackVisible = true;
     if (open) render();
     status(error.name === "AbortError" ? "Folder selection cancelled." : `Couldn’t connect: ${error.message}`);
   }
@@ -513,11 +512,11 @@ function backgrounds(s) {
     row("Show Omarchy wallpaper", toggleCtl("set-wallpaper", s.backgrounds.showWallpaper, v => set(x => { x.backgrounds.showWallpaper = v; }, true), "Show Omarchy wallpaper")),
     s.backgrounds.showWallpaper ? [
       el("div", {class:"background-connect"},
-        el("p", {class:"set-note"}, picker
-          ? "Select /home/username/.local/state/omarchy. Show hidden folders with Ctrl+H."
-          : "Enter your Linux username to connect the wallpaper."),
-        (wallpaperNeedsHome || !picker) ? el("input", {id:"omarchy-home",class:"input",type:"text",spellcheck:false,autocomplete:"off",placeholder:"username",value:wallpaperHome,"aria-label":"Linux username or home directory",oninput:e=>{wallpaperHome=e.target.value;} }) : "",
-        el("button", {id:"omarchy-connect",class:"btn sm",type:"button",onclick:connectOmarchy}, "Connect Omarchy"),
+        el("p", {class:"set-note"}, "Enter your Linux username to connect the wallpaper."),
+        el("input", {id:"omarchy-home",class:"input",type:"text",spellcheck:false,autocomplete:"off",placeholder:"username",value:wallpaperHome,"aria-label":"Linux username or home directory",oninput:e=>{wallpaperHome=e.target.value;} }),
+        el("button", {id:"omarchy-connect",class:"btn sm",type:"button",onclick:()=>connectOmarchy()}, "Connect Omarchy"),
+        picker && folderFallbackVisible ? el("button", {class:"btn ghost sm",type:"button",onclick:()=>connectOmarchy(true)}, "Choose folder instead") : "",
+        picker && folderFallbackVisible ? el("p", {class:"set-note"}, "Select /home/username/.local/state/omarchy. Show hidden folders with Ctrl+H.") : "",
         wallpaperHome && !wallpaperFileGranted ? el("p", {class:"set-note"}, "Enable ‘Allow access to file URLs’ in extension details.") : "",
         el("p", {id:"omarchy-connect-status",class:"set-note",role:"status","aria-live":"polite"}, ""))
     ] : "");

@@ -7,7 +7,7 @@ An opinionated browser start page for Omarchy users. This is an early test build
 1. Extract the archive and open `chrome://extensions` (or your Chromium browser's extensions page).
 2. Turn on **Developer mode**, choose **Load unpacked**, and select this folder, the one containing `manifest.json`.
 3. Open a new tab. The tour ends at **Settings → Background**. **Settings → Shortcuts → Replay tour** runs it again. Fresh profiles start with Comfy density, 24-hour time, Omarchy RSS and an Omarchy website quick link.
-4. To show the Omarchy wallpaper, choose **Connect Omarchy** under **Settings → Background**. Select `/home/username/.local/state/omarchy` in the folder picker; use **Ctrl+H** to reveal `.local`. The extension reads Omarchy state to infer your username. If that state entry is unavailable, enter the username shown in Settings. Enable **Allow access to file URLs** in the extension's details when prompted, then click **Connect Omarchy** again if needed.
+4. To show the Omarchy wallpaper, enter your Linux username under **Settings → Background**, then choose **Connect Omarchy**. Enable **Allow access to file URLs** in the extension's details when prompted, then connect again. If the wallpaper cannot be read and your browser supports folder selection, **Choose folder instead** appears; select `/home/username/.local/state/omarchy` (use **Ctrl+H** to reveal `.local`).
 5. If Chromium adds its own footer, right-click it and choose **Hide footer on New Tab page**.
 
 The extension replaces the browser's new-tab page while enabled. Disable it on the extensions page to restore the previous page. Its settings and cached wallpaper remain in your browser profile unless you remove the extension or clear that data.
