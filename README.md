@@ -19,7 +19,9 @@ Omarchy Start is an opinionated browser start page for Omarchy users. It brings 
 
 **Show Omarchy wallpaper** is on by default in **Settings → Background**. Turn it off for a solid color from the selected Omarchy theme, or from the extension's light/dark palette when Omarchy is unavailable. There are no remote background-image providers.
 
-To connect the wallpaper, click **Connect Omarchy** in **Settings → Background** and select `/home/username/.local/state/omarchy`. Use **Ctrl+H** to reveal the hidden `.local` folder. The extension infers the username from Omarchy's saved background state; if unavailable, Settings offers a username field. Enable **Allow access to file URLs** on the extension’s `chrome://extensions` details page if prompted, then click **Connect Omarchy** again. Chromium's file permission covers local files broadly, although Omarchy Start requests only the current wallpaper. The last displayed original image is cached locally and loaded early on new tabs. With live watching unavailable, the page checks for changes when opened or brought back into focus; no background polling is used. Still images up to 20 MB are supported. Weather and geocoding use external services; optional device location sends coordinates to those providers. A complete privacy document remains to be written before release.
+The [privacy policy](PRIVACY.md) describes local storage, optional permissions, and requests to weather, RSS, search, and location services.
+
+To connect the wallpaper, click **Connect Omarchy** in **Settings → Background** and select `/home/username/.local/state/omarchy`. Use **Ctrl+H** to reveal the hidden `.local` folder. The extension infers the username from Omarchy's saved background state; if unavailable, Settings offers a username field. Enable **Allow access to file URLs** on the extension’s `chrome://extensions` details page if prompted, then click **Connect Omarchy** again. Chromium's file permission covers local files broadly, although Omarchy Start requests only the current wallpaper and theme colors. The last displayed original image is cached locally and loaded early on new tabs. With live watching unavailable, the page checks for changes when opened or brought back into focus; no background polling is used. Still images up to 20 MB are supported. Weather and geocoding use external services; optional device location sends coordinates to those providers. See the privacy policy for the full data-flow description.
 
 ## Try the test copy
 
@@ -54,6 +56,8 @@ node --test tools/*.test.cjs
 Rebuild from the runtime files with `python3 tools/build-test-package.py` at the project root. The script takes the version from `extension/manifest.json`, keeps only that version's folder and ZIP in `dist/`, and produces the same ZIP bytes from the same source files.
 
 A successful unit run does not replace testing the extension in a real browser. The project still needs interaction, accessibility, visual, integration and distribution tests; see the [specification](SPECIFICATION.md).
+
+The [Chrome Web Store submission copy](STORE_SUBMISSION.md) keeps listing text, permission explanations, and the remaining submission gates together.
 
 ## Credits and licensing
 

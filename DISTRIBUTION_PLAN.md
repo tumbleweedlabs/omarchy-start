@@ -1,6 +1,6 @@
 # Omarchy Start distribution plan
 
-**Status:** Chrome Web Store proposal for review, 14 November 2026. The public source repository is live at https://github.com/tumbleweedlabs/omarchy-start; no store item has been published.
+**Status:** Chrome Web Store preparation, 14 November 2026. The public source repository is live at https://github.com/tumbleweedlabs/omarchy-start; no store item has been published. The owner approved the [privacy policy](PRIVACY.md) and [submission copy](STORE_SUBMISSION.md).
 
 ## Recommended route
 
@@ -22,10 +22,17 @@ The current Omarchy Plugin Marketplace accepts Quickshell plugins, not standalon
 
 6. **Publish in stages.** Register a Chrome Web Store developer account (one-time fee), upload the ZIP, complete privacy and listing fields, and submit for review. Use **unlisted** visibility for a small tester group, then switch to **public** once verified. Unlisted items undergo the same policy review as public items. Subsequent versions are uploaded and reviewed before Chrome's normal extension-update mechanism delivers them. Browser-specific compatibility and update behavior outside Chrome still need real testing.
 
+## Current preparation
+
+- 14 Nov 2026: Rechecked the 0.1.2 package structure and manifest. The runtime ZIP contains a root-level manifest and a 128 × 128 PNG icon. Its source and build process are in this repository.
+- 14 Nov 2026: Drafted the privacy policy and listing/permission text from the current implementation. The owner approved the documents and reported that the developer account is set up with a suitable contact email. Final package and live browser checks remain before submission.
+- 14 Nov 2026: Confirmed from Chrome's current documentation that a 128 × 128 store icon and at least one 1280 × 800 screenshot are required. The icon exists; two owner-approved, exact crop/resize listing screenshots are in [`store-assets/`](store-assets/README.md). Chrome documents `https://*/*` as the pattern for a host chosen at runtime, and says `geolocation` cannot be an optional manifest permission. Broad permission scope still requires review.
+- Browser Use refused the installed `chrome-extension://` page because its URL policy allows only HTTP(S), and explicitly forbade using another computer or browser surface to reach it. This is a tool access limit, not an extension test result. Obtain live interaction evidence from the owner or after a policy change outside this task; do not mark those checks complete from source inspection.
+
 ## Decisions to settle
 
 1. The public source repository is `tumbleweedlabs/omarchy-start`.
-2. Which Google account should own the Chrome Web Store developer listing? The account email cannot be changed later without transferring the item.
+2. Confirm the developer dashboard shows the owner's account email as verified and 2-Step Verification enabled before submission.
 3. Are we comfortable keeping the current one-time wallpaper permission flow for the first store release, with the theme-color fallback if a user declines?
 
 ## Sources checked

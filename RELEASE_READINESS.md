@@ -7,6 +7,10 @@ This is the working checklist for a first public release. A missing verification
 
 **Tracking rule:** When an item is complete, mark its box `[x]`, strike through the item text, and append a short dated status update with the result and a link to evidence when available. For example: `- [x] ~~Verify source X in Chromium.~~ 13 Nov 2026: Image, credit and cache worked in Chromium 131; see test notes.` If a source is deferred, record the release decision and strike through its verification item only after that source is removed from the release build. Keep open items unstruck and update **Last reviewed** whenever this tracker changes.
 
+The owner approved the [privacy policy](PRIVACY.md) and [store submission copy](STORE_SUBMISSION.md) and reported that the developer account has a suitable email. Two owner-approved 1280 × 800 [listing screenshots](store-assets/README.md) are prepared. Live browser checks remain open.
+
+Use the [0.1.2 browser check](BROWSER_TEST_CHECKLIST.md) to record browser versions, visible results, and failures. A screenshot alone does not verify interactions or permission recovery.
+
 ## Current iteration
 
 - [x] ~~Remove the development archive and stale identifiers.~~ 14 Nov 2026: Deleted the unused archive, removed its links from product docs, and renamed the remaining source identifiers.
@@ -18,7 +22,7 @@ This is the working checklist for a first public release. A missing verification
 - [x] ~~Add an optional three-card Omarchy news section.~~ 13 Nov 2026: Added official RSS headlines with direct story links, an opt-in site permission and a six-hour refresh window; no news startup code or request when disabled. Feed normalization and parsing tests passed. The refresh window changed to two hours on 14 Nov 2026.
 - [x] ~~Show opening body text beneath each news headline.~~ 13 Nov 2026: Cards use the RSS article body, capped at 520 characters and ten display lines, with a distinct headline style. They match the top widgets' column spacing and shrink with available viewport height. The cache version forces a refresh of old short excerpts.
 - [x] ~~Defer recent-plugin cards to keep the page lean.~~ 13 Nov 2026: Omarchy Plugins remains a search scope; no extra registry feed or page cards were added.
-- [ ] Visually verify the no-scroll layout, news cards, catalog scroll position and footer spacing in the installed extension, including narrow windows and browser zoom. Browser Use blocked access to the `chrome-extension://` page during this pass; source and automated checks are available.
+- [ ] Visually verify the no-scroll layout, news cards, catalog scroll position and footer spacing in the installed extension, including narrow windows and browser zoom. Browser Use blocked access to the `chrome-extension://` page during this pass; source and automated checks are available. 14 Nov 2026: Owner screenshots at 740 × 1044 and 1657 × 1088 show all three news cards and bottom controls without visible clipping. At 740 px, the weather location and search hint truncate; browser zoom, catalog scroll position, and interactive behavior remain unverified.
 - [x] ~~Verify the Omarchy RSS cards and story click-through in an unpacked Chromium extension.~~ 13 Nov 2026: The user confirmed the stories populated and click-through worked in the installed extension. The new taller body-text layout still needs visual review.
 - [x] ~~Add selectable Omarchy or user-specified RSS/Atom feeds.~~ 14 Nov 2026: The Enable RSS control offers Omarchy news or an HTTPS feed URL, requests access to its host, uses separate last-successful caches and refreshes after two hours. RSS/Atom parser tests pass.
 - [x] ~~Remove remote image providers and simplify Background.~~ 14 Nov 2026: The only image source is the current Omarchy wallpaper. Turning it off shows the selected theme color. Retired provider modules, cache data and host permissions were removed; wallpaper cache tests pass.
