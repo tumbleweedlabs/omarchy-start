@@ -25,7 +25,7 @@ To connect the wallpaper, enter your Linux username under **Settings → Backgro
 
 ## Try the test copy
 
-Build the current test ZIP with `python3 tools/build-test-package.py`; `dist/` is generated locally and is not committed. For version 0.1.3, the result is `dist/omarchy-start-0.1.3.zip`. Extract it into a folder, then select that folder with **Load unpacked**. The ZIP also has `manifest.json` at its root for Chrome Web Store upload. Its [included tester README](extension/README.md) covers setup, a focused test checklist, permissions, known limitations and useful bug-report details. The archive contains runtime files and notices; it excludes tests and project planning documents.
+Build the current test ZIP with `python3 tools/build-test-package.py`; `dist/` is generated locally and is not committed. For version 0.1.4, the result is `dist/omarchy-start-0.1.4.zip`. Extract it into a folder, then select that folder with **Load unpacked**. The ZIP also has `manifest.json` at its root for Chrome Web Store upload. Its [included tester README](extension/README.md) covers setup, a focused test checklist, permissions, known limitations and useful bug-report details. The archive contains runtime files and notices; it excludes tests and project planning documents.
 
 1. Open `chrome://extensions` in Chrome or the equivalent extensions page in your Chromium-based browser.
 2. Enable **Developer mode** and choose **Load unpacked**.

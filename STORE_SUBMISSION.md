@@ -2,7 +2,7 @@
 
 **Prepared:** 14 November 2026
 
-**Candidate:** 0.1.3 test build. Owner-approved copy; verify against the final ZIP before entering these fields.
+**Candidate:** 0.1.4 test build. Owner-approved copy; verify against the final ZIP before entering these fields.
 
 ## Listing
 
@@ -38,7 +38,7 @@
 | `https://*/*` (optional) | Permit a user-selected HTTPS RSS/Atom host that cannot be known when the package is built. The extension requests access to the selected feed's host at runtime and fetches only that feed. |
 | `file:///*` (optional) | Read the Omarchy current wallpaper and theme color file after the user enters their Linux username and allows file URLs. Chromium's grant is broad, though the implemented reads target Omarchy state. |
 
-The `https://*/*` and `file:///*` declarations need particular review because their potential scope is broader than the normal requests. There are no content scripts, tab-history reads, or remote executable scripts in the 0.1.3 package.
+The `https://*/*` and `file:///*` declarations need particular review because their potential scope is broader than the normal requests. There are no content scripts, tab-history reads, or remote executable scripts in the 0.1.4 package.
 
 ## Assets and submission gates
 
@@ -46,6 +46,6 @@ The `https://*/*` and `file:///*` declarations need particular review because th
 - [x] ~~Prepare listing screenshots from the owner's actual dashboard and Settings captures.~~ 14 Nov 2026: The owner approved exact pixel crop/resize. Two 1280 × 800 PNGs are in [`store-assets/`](store-assets/README.md), made from the actual 1657 × 1088 dashboard and 1656 × 1087 Settings captures. Both were visually inspected for private data; they show public Omarchy content and the owner's accepted Settings appearance. Originals are untouched.
 - [x] ~~Confirm the owner-approved privacy policy URL is reachable without sign-in.~~ 14 Nov 2026: An unauthenticated HTTP request returned 200 and the page rendered the policy title.
 - [x] ~~Choose the developer account and a suitable email.~~ 14 Nov 2026: Owner reports the account is set up with a good email. Confirm the dashboard's verification and 2-Step Verification indicators before submission.
-- [ ] Confirm the 0.1.3 candidate and owner testing for the initial listing. The username-first connection flow changed after the 0.1.2 testing; verify it in a browser before submission.
+- [ ] Confirm the 0.1.4 candidate and owner testing for the initial listing. The owner confirmed the new Settings credit works and looks good and reports having run the browser checks; browser versions and individual outcomes are not recorded here.
 - [ ] Confirm the developer dashboard shows a verified contact email and 2-Step Verification, then review the package and permission explanations in the final submission form.
 - [ ] Upload the ZIP and fill the Privacy practices and distribution fields. Start with unlisted visibility for a limited tester group.

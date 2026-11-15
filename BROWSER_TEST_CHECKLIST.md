@@ -1,6 +1,6 @@
-# Omarchy Start 0.1.3 browser check
+# Omarchy Start 0.1.4 browser check
 
-Use the unpacked folder `extension/` (the folder containing `manifest.json`) or `dist/omarchy-start-0.1.3/`. Keep only one copy enabled per browser. Record browser name and version, Omarchy version if known, and the date. A screenshot proves appearance at one size; record interaction outcomes separately.
+Use the unpacked folder `extension/` (the folder containing `manifest.json`) or `dist/omarchy-start-0.1.4/`. Keep only one copy enabled per browser. Record browser name and version, Omarchy version if known, and the date. A screenshot proves appearance at one size; record interaction outcomes separately.
 
 ## Screenshot for the store
 

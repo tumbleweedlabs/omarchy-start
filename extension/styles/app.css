@@ -669,6 +669,8 @@ img.fav.custom { object-fit: contain; }
 .set-value .ico { font-size: 15px; }
 .set-sub { display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--text-2); margin: 12px 0 8px; }
 .set-note { font-size: 12px; color: var(--text-3); margin: 8px 0 0; }
+.settings-credit a { color: var(--accent); text-decoration: none; }
+.settings-credit a:hover, .settings-credit a:focus-visible { text-decoration: underline; }
 .list { display: flex; flex-direction: column; gap: 6px; margin: 6px 0 8px; }
 .list > .list-row { margin: 0; }
 .list-row { display: flex; align-items: center; gap: 6px; margin: 6px 0; }

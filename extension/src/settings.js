@@ -622,5 +622,7 @@ function about() {
       const { startTour } = await import("./tour.js");
       startTour();
     } }, "Replay tour"),
-    el("p", { class: "set-note" }, `Omarchy Start ${v} · Icons by Phosphor`));
+    el("p", { class: "set-note" }, `Omarchy Start ${v} · Icons by Phosphor`),
+    el("p", { class: "set-note settings-credit" }, "Designed by Tumbleweed Labs · ",
+      el("a", { href: "https://github.com/tumbleweedlabs/omarchy-start", target: "_blank", rel: "noopener noreferrer" }, "View source")));
 }
