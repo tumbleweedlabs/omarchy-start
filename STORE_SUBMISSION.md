@@ -1,4 +1,4 @@
-# Chrome Web Store submission draft
+# Chrome Web Store submission
 
 **Updated:** 15 November 2026
 
